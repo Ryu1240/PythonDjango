@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ブログ編集</title>
+</head>
+<body>
+    <h1 style="text-align: center;">記事編集</h1>
+    <div style="width: 70%;margin: 0px auto;">
+        <div>
+            <div style="margin: 60px 20px;">
+                <form action="{% url 'blogs:edit' blog.id %}" method ="post">{%csrf_token%}
+                    {{form.as_p }}
+                    <button class="btn" type="submit">保存</button>
+                </form>
+            </div>
+            <div style="text-align: center; margin-top: 50px">
+                <a href="{% url 'blogs:detail' blog.id%}">記事に戻る</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
