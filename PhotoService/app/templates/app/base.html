@@ -1,0 +1,23 @@
+{%load static%}
+{% comment %} CSSや画像などの静的ファイルを取り込むための記述 {% endcomment %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>写真投稿サイト</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="{% url 'app:index' %}">写真投稿サイト</a></h1>
+            <div class="header-menu">
+                <a href="">投稿</a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        {% comment %} この部分で他のファイルで定義されている中身を取り込む {% endcomment %}
+        {% block content %}{% endblock %} 
+    </div>
+</body>
+</html>
