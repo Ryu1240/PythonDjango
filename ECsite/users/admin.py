@@ -16,7 +16,7 @@ class MyUserCreationForm(UserCreationForm):
         
 class MyUserAdmin(UserAdmin):
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'password', 'fav_products')}),
         (_('Permissions'), {
             'fields': (
                 'is_active',

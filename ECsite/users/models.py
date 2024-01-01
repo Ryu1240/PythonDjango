@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils import timezone
-
+from app.models import Product
 from django.contrib.auth.base_user import BaseUserManager
 
 # Create your models here.
@@ -37,8 +37,9 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     initial_point = 50000
-    email = models.EmailField(" ", unique=True)
+    email = models.EmailField("メールアドレス", unique=True)
     point = models.PositiveIntegerField(default=initial_point)
+    fav_products = models.ManyToManyField(Product,blank=True)
     is_staff = models.BooleanField("is_staff", default=False)
     is_active = models.BooleanField("is_active", default=True)
     date_joined = models.DateTimeField("date_joined", default=timezone.now)
