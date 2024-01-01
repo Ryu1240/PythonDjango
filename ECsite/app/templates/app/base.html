@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 
 <html>
@@ -12,14 +13,22 @@
                 <h1><a href="{% url 'app:index' %}">Djamazon</a></h1>
                 <div class="header-menu">
                     {% if request.user.is_authenticated %}
-                        <a href="{% url 'app:logout' %}">ログアウト</a>
+                        <span>Point: {{ user.point | intcomma }}</span>
+                        <span><a href="{% url 'app:fav_products' %}">お気に入り</a></span>
+                        <span><a href="">カート</a></span>
+                        <span><a href="">注文履歴</a></span>
+                        <span><a href="{% url 'app:logout' %}">ログアウト</a></span>
                     {% else %}
                         <a href="{% url 'app:login' %}">ログイン</a>
+                        <a href="{% url 'app:signup' %}">新規登録</a>
                     {% endif %}
                 </div>
             </div>
         </header>
         <div class="container">
+            {% for message in messages %}
+                <p class="message-{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
             {% block content %}{% endblock %}
         </div>
     </body>
