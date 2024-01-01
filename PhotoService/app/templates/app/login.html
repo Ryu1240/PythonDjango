@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<form method="POST">{%csrf_token%}
+    {% if form.errors %}
+        <p>ユーザ名かパスワードが間違っています</p>
+    {% endif %}
+    <h2>ログイン</h2>
+    <label>ユーザ名</label>
+    <input name="username">
+    <br>
+    <label>パスワード</label>
+    <input type="password" name="password">
+    <br>
+    <input type="submit" value ="ログイン">
+</form>
+{% endblock %}

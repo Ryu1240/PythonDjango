@@ -1,11 +1,8 @@
-{% extends 'app/base.html'%} 
-{% comment %} ↑このファイルがbase.htmlを拡張したものであることを表す {% endcomment %}
-{% comment %} 以下の囲まれた部分がbase.htmlで記述した囲んだ部分に取り込まれる {% endcomment %}
-{% block content%}
-<h2>トップページ</h2>
+{% extends "app/base.html" %}
+{%block content%}
+{% if category%}
+    <h2> カテゴリー:{{ category.title }}の検索結果</h2>
+{%endif%}
+{% include 'app/photos_list.html' %}
 
-{% for photo in photos %}
-    <img src="{{ photo.image.url }}" class = "photo-img">
-{% endfor %}
-
-{% endblock %}
+{%endblock%}

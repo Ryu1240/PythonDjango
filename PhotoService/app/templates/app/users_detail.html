@@ -1,17 +1,17 @@
-{% extends 'app/base.html' %}
-
-{% block content%}
+{%extends 'app/base.html'%}
+{%block content%}
 
 <h2 class="user-name">@{{ user.username }}</h2>
-
-
-{{ user.is_superuser}} {% comment %}  管理者の場合はtrue {% endcomment %}
-
-{% comment %} ユーザーの持つ権限によって表示を切り替え {% endcomment %}
-{% if user.is_superuser %}
-    <p>管理者</p>
+{% if photos.count != 0%}
+    <p>投稿<strong>{{ photos.count }}</strong>件</p>
 {% else %}
-    <p>一般ユーザー</p>
-{% endif %}
+    {% if user == request.user %}
+        <p>初めての投稿をしてみましょう</p>
+    {%else%}
+        <p>@{{user.username}}さんはまだ投稿していません</p>
+    {% endif%}
+{%endif%}
 
-{%endblock%}
+{% include 'app/photos_list.html' %}
+
+{% endblock %}
