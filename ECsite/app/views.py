@@ -183,3 +183,9 @@ def fetch_address(zip_code):
         result = results[0]
         address = result['address1'] + result['address2'] + result['address3']
     return address
+
+@login_required
+def order_history(request):
+    user = request.user
+    sales = Sale.objects.filter(user=user).order_by('-created_at')
+    return render(request, 'app/order_history.html' , {'sales':sales})

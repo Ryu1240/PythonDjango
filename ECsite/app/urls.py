@@ -25,4 +25,5 @@ urlpatterns = [
         views.change_product_amount,
         name='change_product_amount'
     ),
+    path('order_history/', views.order_history ,name='order_history'),
 ]
