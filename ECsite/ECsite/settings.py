@@ -133,3 +133,6 @@ LOGOUT_REDIRECT_URL = 'app:index'
 # 画像関連
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+#セッションを毎回更新する
+SESSION_SAVE_EVERY_REQUEST = True
